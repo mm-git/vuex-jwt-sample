@@ -3,7 +3,7 @@
     <div>
       <h1>Login</h1>
     </div>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" autocomplete="off">
       <div class="form-item">
         <label class="form-item-label" for="login-id">ID : </label>
         <input class="form-item-edit" id="login-id" type="text" v-model="userId" />
@@ -50,7 +50,7 @@ export default {
   .login-frame {
     width: 60vw;
     padding: 20px 20px 40px;
-    margin: 30px auto;
+    margin: 130px auto;
     background-color: #a5d6e6;
     border-radius: 8px;
   }

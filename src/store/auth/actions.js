@@ -11,8 +11,8 @@ export default {
 
     try {
       const res = await Vue.axios.post('/login', params)
-      if (res.data.status === 'OK') {
-        action.commit(types.AUTH_LOGIN, res.data.data)
+      if (res.status === 200) {
+        action.commit(types.AUTH_LOGIN, res.data)
       } else {
         action.commit(types.AUTH_LOGOUT)
       }
@@ -42,7 +42,7 @@ export default {
         }
       })
       if (res.status === 200 && !('errors' in res.data)) {
-        action.commit(types.AUTH_REFRESH, res.data.data)
+        action.commit(types.AUTH_REFRESH, res.data)
       } else {
         action.commit(types.AUTH_TOKEN_TIMEOUT)
       }

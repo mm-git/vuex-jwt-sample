@@ -21,7 +21,7 @@ const guardAPIAccess = (to, from, next) => {
     next()
     return
   }
-  next('/login')
+  next('/')
 }
 
 export default new Router({
