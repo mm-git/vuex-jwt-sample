@@ -13,7 +13,7 @@
         <input class="form-item-edit" id="login-password" type="password" v-model="password" />
       </div>
       <div class="button-frame">
-        <button class="login-button">Login</button>
+        <normal-button type="submit">Login</normal-button>
       </div>
     </form>
   </div>
@@ -21,9 +21,11 @@
 
 <script>
 import { mapActions } from 'vuex'
+import NormalButton from '../components/normalButton'
 
 export default {
   name: 'login',
+  components: { NormalButton },
   data () {
     return {
       userId: '',
@@ -91,16 +93,5 @@ export default {
     display: flex;
     justify-content: center;
 
-    .login-button {
-      width: 200px;
-      height: 40px;
-      border-radius: 8px;
-      border-style: none;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      user-select: none;
-    }
   }
 </style>

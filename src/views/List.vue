@@ -1,17 +1,29 @@
 <template>
   <div>
     <div class="button-frame">
-      <button class="logout-button" @click="onLogout">Logout</button>
+      <normal-button @click.native="onLogout">Logout</normal-button>
+    </div>
+    <div class="todo-frame">
+      <h3>TODO</h3>
+      <todo-card
+        v-for="todo in todoList"
+        :key="todo.id"
+        :title="todo.title"
+        :status="todo.status"></todo-card>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import NormalButton from '../components/normalButton'
+import TodoCard from '../components/todoCard'
 
 export default {
   name: 'List',
   components: {
+    TodoCard,
+    NormalButton
   },
   data () {
     return {
@@ -19,12 +31,17 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['logout']),
+    ...mapActions('todoList', ['fetch']),
     async onLogout () {
       await this.logout()
       await this.$router.push('/')
     }
   },
   computed: {
+    ...mapState('todoList', ['todoList'])
+  },
+  async created () {
+    await this.fetch()
   }
 }
 </script>
@@ -34,17 +51,15 @@ export default {
     display: flex;
     justify-content: flex-end;
     margin: 30px 20px;
+  }
 
-    .logout-button {
-      width: 200px;
-      height: 40px;
-      border-radius: 8px;
-      border-style: none;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      user-select: none;
-    }
+  .todo-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 100px;
+    padding-bottom: 30px;
+    border-radius: 8px;
+    background-color: #ffffff;
   }
 </style>

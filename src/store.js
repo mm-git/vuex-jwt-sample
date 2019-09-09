@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './store/auth'
+import todoList from './store/todoList'
 
 import createPersistedState from 'vuex-persistedstate'
 
@@ -11,7 +12,8 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   strict: debug,
   modules: {
-    auth
+    auth,
+    todoList
   },
   plugins: [createPersistedState({
     key: 'vuex-jwt-sample',
