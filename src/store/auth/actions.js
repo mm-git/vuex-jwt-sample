@@ -42,7 +42,7 @@ export default {
         }
       })
       if (res.status === 200 && !('errors' in res.data)) {
-        action.commit(types.AUTH_REFRESH, res.data)
+        action.commit(types.AUTH_LOGIN, res.data)
       } else {
         action.commit(types.AUTH_TOKEN_TIMEOUT)
       }

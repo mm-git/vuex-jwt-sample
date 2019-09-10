@@ -1,6 +1,5 @@
 export const AUTH_REQUESTING = 'requesting'
 export const AUTH_REFRESHING = 'refreshing'
 export const AUTH_LOGIN = 'login'
-export const AUTH_REFRESH = 'refresh'
 export const AUTH_TOKEN_TIMEOUT = 'token_timeout'
 export const AUTH_LOGOUT = 'logout'

@@ -7,12 +7,7 @@ export default {
   [types.AUTH_REFRESHING] (state) {
     state.status = 'refreshing'
   },
-  [types.AUTH_LOGIN] (state, { accessToken, refreshToken, account }) {
-    state.status = 'login'
-    state.accessToken = accessToken
-    state.refreshToken = refreshToken
-  },
-  [types.AUTH_REFRESH] (state, { accessToken, refreshToken }) {
+  [types.AUTH_LOGIN] (state, { accessToken, refreshToken }) {
     state.status = 'login'
     state.accessToken = accessToken
     state.refreshToken = refreshToken
