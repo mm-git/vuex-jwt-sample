@@ -26,7 +26,7 @@ export default {
   },
   async refresh (action) {
     const limit = action.getters.exp - Math.floor(Date.now() / 1000)
-    if (limit > 30) {
+    if (limit > 5) {
       return true
     }
 

@@ -4,6 +4,23 @@
   </div>
 </template>
 
+<script>
+import { mapState } from 'vuex'
+export default {
+  name: 'app',
+  computed: {
+    ...mapState('auth', ['status'])
+  },
+  watch: {
+    status (newStatus) {
+      if (newStatus === 'token_timeout') {
+        this.$router.push('/timeout')
+      }
+    }
+  }
+}
+</script>
+
 <style lang="scss">
   body {
     margin: 0;
