@@ -13,7 +13,7 @@ export default {
   },
   watch: {
     status (newStatus) {
-      if (newStatus === 'token_timeout') {
+      if (newStatus === 'token_expired') {
         this.$router.push('/timeout')
       }
     }

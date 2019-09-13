@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import store from '../store'
-import { AUTH_TOKEN_TIMEOUT } from '../store/auth/mutation-types'
+import { AUTH_TOKEN_EXPIRED } from '../store/auth/mutation-types'
 
 let config = {
   baseURL: 'http://localhost:8888',
@@ -29,7 +29,7 @@ _axios.interceptors.response.use(
   function (error) {
     const responseUrl = error.request.responseURL || error.config.url
     if (responseUrl.slice(-5) !== 'login' && error.response.status === 401) {
-      store.commit(`auth/${AUTH_TOKEN_TIMEOUT}`)
+      store.commit(`auth/${AUTH_TOKEN_EXPIRED}`)
     }
     return Promise.reject(error)
   }

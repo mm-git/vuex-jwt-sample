@@ -12,8 +12,8 @@ export default {
     state.accessToken = accessToken
     state.refreshToken = refreshToken
   },
-  [types.AUTH_TOKEN_TIMEOUT] (state) {
-    state.status = 'token_timeout'
+  [types.AUTH_TOKEN_EXPIRED] (state) {
+    state.status = 'token_expired'
     state.accessToken = ''
     state.refreshToken = ''
   },
