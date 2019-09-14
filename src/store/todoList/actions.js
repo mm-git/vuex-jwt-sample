@@ -5,6 +5,7 @@ export default {
   async fetch (action) {
     const res = await action.dispatch('auth/refresh', {}, { root: true })
     if (!res) {
+      action.commit(types.FAILED)
       return false
     }
 
@@ -39,6 +40,9 @@ export default {
     } catch (e) {
       action.commit(types.FAILED)
     }
-    return action.state.status === 'login'
+    return action.state.status === 'fetch'
+  },
+  async logout (action) {
+    action.commit(types.CLEAR)
   }
 }

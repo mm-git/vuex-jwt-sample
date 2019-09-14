@@ -36,13 +36,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions('auth', ['logout']),
+    ...mapActions('auth', { authLogout: 'logout' }),
+    ...mapActions('todoList', { todoListLogout: 'logout' }),
     ...mapActions('todoList', ['fetch']),
     async onRefreshList () {
       await this.fetch()
     },
     async onLogout () {
-      await this.logout()
+      // storeが増えるたびに、各ストアのlogout()アクションを追加しなくてはいけない。
+      // 追加忘れそうなので、いい方法がないものか？？
+      // 以下の方法で各storeのlogout()アクションを呼ぶことはできるが順番は制御しにくい
+      // for (const actionName of Object.keys(this.$store._actions)) {
+      //   if (/.*\/logout/.test(actionName)) {
+      //     await this.$store.dispatch(actionName)
+      //   }
+      // }
+      await this.todoListLogout()
+      await this.authLogout()
       await this.$router.push('/')
     }
   },
